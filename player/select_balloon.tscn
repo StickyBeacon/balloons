@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbtadf3vqe0xq"]
+
+[ext_resource type="Script" uid="uid://1thtintp6t7b" path="res://player/select_balloon.gd" id="1_t8dbo"]
+[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="2_clmiv"]
+
+[node name="SelectBalloon" type="Node2D"]
+script = ExtResource("1_t8dbo")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.34861854, 0.34861854)
+texture = ExtResource("2_clmiv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -14.0
+offset_right = 24.0
+offset_bottom = 9.0
+text = "Pert"
