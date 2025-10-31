@@ -11,6 +11,16 @@ config_version=5
 [application]
 
 config/name="balloons"
-run/main_scene="uid://7q2mbwdkvitd"
+run/main_scene="uid://34jjdlmu6dgd"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ItemContainer="*res://managers/item_container.gd"
+
+[layer_names]
+
+2d_physics/layer_1="Ground"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Item"

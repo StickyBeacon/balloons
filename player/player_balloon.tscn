@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5psgwewk1v3"]
+
+[ext_resource type="Script" uid="uid://ov74tu5f2qaq" path="res://player/player_balloon.gd" id="1_5o7mk"]
+[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="1_f47xf"]
+[ext_resource type="Script" uid="uid://b1v3yn4eib51f" path="res://player/aimer.gd" id="3_67ajk"]
+[ext_resource type="Script" uid="uid://b2tqqnkabodfk" path="res://player/ammo_switcher.gd" id="4_30ftv"]
+[ext_resource type="Script" uid="uid://2yrddu6k5r8h" path="res://player/state_machine.gd" id="4_homko"]
+[ext_resource type="Script" uid="uid://ckjqqd4s0svgt" path="res://player/ammo_container.gd" id="5_c4xvv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c4xvv"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5o7mk"]
+radius = 50.0
+
+[node name="PlayerBalloon" type="RigidBody2D"]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_c4xvv")
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 3.0
+script = ExtResource("1_5o7mk")
+
+[node name="BalloonBackground" type="Sprite2D" parent="."]
+scale = Vector2(0.77273715, 0.77273715)
+texture = ExtResource("1_f47xf")
+
+[node name="AmmoIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+scale = Vector2(0.5906888, 0.5906888)
+texture = ExtResource("1_f47xf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5o7mk")
+
+[node name="AimerNode" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="AimerIcon" type="Sprite2D" parent="AimerNode"]
+position = Vector2(0, -50)
+scale = Vector2(0.2508161, 0.2508161)
+texture = ExtResource("1_f47xf")
+
+[node name="PrivateScripts" type="Node" parent="."]
+
+[node name="Aimer" type="Node" parent="PrivateScripts"]
+script = ExtResource("3_67ajk")
+
+[node name="AmmoSwitcher" type="Node" parent="PrivateScripts"]
+unique_name_in_owner = true
+script = ExtResource("4_30ftv")
+
+[node name="AmmoSwitchTimer" type="Timer" parent="PrivateScripts/AmmoSwitcher"]
+unique_name_in_owner = true
+wait_time = 0.5
+autostart = true
+
+[node name="AmmoContainer" type="Node" parent="PrivateScripts"]
+unique_name_in_owner = true
+script = ExtResource("5_c4xvv")
+
+[node name="StateMachine" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_homko")
+
+[connection signal="timeout" from="PrivateScripts/AmmoSwitcher/AmmoSwitchTimer" to="PrivateScripts/AmmoSwitcher" method="_on_ammo_switch_timer_timeout"]

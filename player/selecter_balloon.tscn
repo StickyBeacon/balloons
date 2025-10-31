@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbtadf3vqe0xq"]
 
-[ext_resource type="Script" uid="uid://1thtintp6t7b" path="res://player/select_balloon.gd" id="1_t8dbo"]
-[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="2_clmiv"]
+[ext_resource type="Script" uid="uid://1thtintp6t7b" path="res://player/selecter_balloon.gd" id="1_wlyg5"]
+[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="2_be8e5"]
 
 [node name="SelectBalloon" type="Node2D"]
-script = ExtResource("1_t8dbo")
+script = ExtResource("1_wlyg5")
 
 [node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0, 0, 0, 0.39215687)
 scale = Vector2(0.34861854, 0.34861854)
-texture = ExtResource("2_clmiv")
+texture = ExtResource("2_be8e5")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -16.0

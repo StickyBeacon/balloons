@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://7q2mbwdkvitd"]
+
+[ext_resource type="Script" uid="uid://drcdpwnw10juk" path="res://input_checker.gd" id="1_3bvoi"]
+[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="2_titsa"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="InputChecker" type="Node2D" parent="."]
+script = ExtResource("1_3bvoi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.15686275)
+position = Vector2(5.722046e-06, 223.99998)
+scale = Vector2(8.526678, 1.2903484)
+texture = ExtResource("2_titsa")
+
+[node name="Voters" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 224)

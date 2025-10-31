@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://8jsdqtei6228"]
+
+[ext_resource type="Script" uid="uid://bc07w0xffnix4" path="res://player/voter_balloon.gd" id="1_kjh50"]
+[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="2_h8qle"]
+[ext_resource type="Script" uid="uid://86n23fca6om1" path="res://player/vote_action.gd" id="3_0uapk"]
+
+[node name="VoterBalloon" type="Node2D"]
+script = ExtResource("1_kjh50")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.39215687)
+texture = ExtResource("2_h8qle")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -51.0
+offset_top = -29.0
+offset_right = -11.0
+offset_bottom = -6.0
+scale = Vector2(2.7600245, 2.7600245)
+text = "Pert"
+
+[node name="VoteAction" type="Node" parent="."]
+script = ExtResource("3_0uapk")
