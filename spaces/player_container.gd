@@ -9,7 +9,6 @@ func clear_players() -> void:
 
 
 func spawn_players() -> void:
-	print_stack()
 	for balloon : BalloonResource in PlayerManager.get_player_resources():
 		var player : PlayerBalloon = player_balloon_res.instantiate()
 		player.set_balloon(balloon)

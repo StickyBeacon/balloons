@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxoicalmq7qwb"]
+
+[ext_resource type="PackedScene" uid="uid://c3orcgqf86l75" path="res://spaces/basic_map.tscn" id="1_aitmw"]
+[ext_resource type="PackedScene" uid="uid://bcjfxmml017j6" path="res://spaces/obstacles/obstacle.tscn" id="2_6k8kg"]
+
+[node name="Map1" instance=ExtResource("1_aitmw")]
+
+[node name="Obstacle" parent="." index="4" instance=ExtResource("2_6k8kg")]
+scale = Vector2(24.861572, 7.3957143)
+
+[node name="Obstacle2" parent="." index="5" instance=ExtResource("2_6k8kg")]
+position = Vector2(389, -201)
+scale = Vector2(3.347606, 2.4309156)
+
+[node name="Obstacle3" parent="." index="6" instance=ExtResource("2_6k8kg")]
+position = Vector2(-393.99994, 180)
+scale = Vector2(3.347606, 2.4309156)

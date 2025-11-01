@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://34jjdlmu6dgd"]
+[gd_scene load_steps=11 format=3 uid="uid://34jjdlmu6dgd"]
 
 [ext_resource type="Script" uid="uid://peyfa7wq278g" path="res://spaces/player_container.gd" id="1_4q24o"]
 [ext_resource type="PackedScene" uid="uid://b5psgwewk1v3" path="res://player/player_balloon.tscn" id="1_7tu88"]
 [ext_resource type="Script" uid="uid://bt36tt4mqf6wo" path="res://spaces/round_manager.gd" id="1_v3yrf"]
 [ext_resource type="Script" uid="uid://b07gk6061450v" path="res://player/balloon_resource.gd" id="4_5syc4"]
+[ext_resource type="Script" uid="uid://cly2ednkigx13" path="res://spaces/map_manager.gd" id="5_mtx37"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_5syc4"]
 device = -1
@@ -32,7 +33,7 @@ metadata/_custom_type_script = "uid://b07gk6061450v"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="RoundManager" type="Node" parent="."]
+[node name="RoundManager" type="Node" parent="." groups=["RoundManager"]]
 script = ExtResource("1_v3yrf")
 
 [node name="PlayerContainer" type="Node2D" parent="."]
@@ -77,3 +78,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 shape = SubResource("WorldBoundaryShape2D_7tu88")
+
+[node name="MapManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_mtx37")

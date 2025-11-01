@@ -32,5 +32,6 @@ func get_hit() -> void:
 
 
 func explode() -> void:
-	print("%s: I AM DEAD!")
+	print("%s: I AM DEAD!" % name)
+	get_tree().get_first_node_in_group("RoundManager").player_died(self)
 	queue_free()

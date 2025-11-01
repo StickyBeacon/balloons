@@ -3,6 +3,39 @@ extends Node
 
 func _ready() -> void:
 	var players : Array[BalloonResource] = PlayerManager.get_player_resources()
-	if players.size() > 0:
-		%PlayerContainer.clear_players()
+	if players.is_empty():
+		for child : PlayerBalloon in %PlayerContainer.get_children():
+			PlayerManager.add_player(child.balloon)
+	next_round()
+
+
+func player_died(node : PlayerBalloon) -> void:
+	print("%s: %s just died!" % [name,node.name])
+	var players : Array[Node] = %PlayerContainer.get_children()
+	
+	if players.size() == 2:
+		ItemContainer.clear_items()
+		var winner : PlayerBalloon 
+		if players[0] == node:
+			winner = players[1]
+		else:
+			winner = players[0]
+		winner.balloon.points += 1
+		print("%s: %s has %s points!" % [name, winner.name, winner.balloon.points])
+		if winner.balloon.points >= 5:
+			print("%s: %s has won the game!" % [name, winner.name])
+			end_game()
+			return
+		next_round()
+
+
+func end_game() -> void:
+	%PlayerContainer.clear_players()
+	print("%s: Game has ended" % name)
+
+
+func next_round() -> void:
+	%PlayerContainer.clear_players()
+	%MapManager.change_map()
+	await get_tree().create_timer(1).timeout
 	%PlayerContainer.spawn_players()
