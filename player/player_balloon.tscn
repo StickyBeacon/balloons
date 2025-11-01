@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5psgwewk1v3"]
+[gd_scene load_steps=10 format=3 uid="uid://b5psgwewk1v3"]
 
 [ext_resource type="Script" uid="uid://ov74tu5f2qaq" path="res://player/player_balloon.gd" id="1_5o7mk"]
 [ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="1_f47xf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b2tqqnkabodfk" path="res://player/ammo_switcher.gd" id="4_30ftv"]
 [ext_resource type="Script" uid="uid://2yrddu6k5r8h" path="res://player/state_machine.gd" id="4_homko"]
 [ext_resource type="Script" uid="uid://ckjqqd4s0svgt" path="res://player/ammo_container.gd" id="5_c4xvv"]
+[ext_resource type="Script" uid="uid://bej4gpf5hf1jw" path="res://player/overheater.gd" id="6_5se1h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c4xvv"]
 friction = 0.0
@@ -16,6 +17,7 @@ radius = 50.0
 
 [node name="PlayerBalloon" type="RigidBody2D"]
 collision_layer = 2
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_c4xvv")
 gravity_scale = 0.0
 lock_rotation = true
@@ -23,6 +25,7 @@ linear_damp = 3.0
 script = ExtResource("1_5o7mk")
 
 [node name="BalloonBackground" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(0.77273715, 0.77273715)
 texture = ExtResource("1_f47xf")
 
@@ -37,7 +40,7 @@ shape = SubResource("CircleShape2D_5o7mk")
 
 [node name="AimerNode" type="Node2D" parent="."]
 unique_name_in_owner = true
-visible = false
+modulate = Color(1, 1, 1, 0.5019608)
 
 [node name="AimerIcon" type="Sprite2D" parent="AimerNode"]
 position = Vector2(0, -50)
@@ -45,6 +48,10 @@ scale = Vector2(0.2508161, 0.2508161)
 texture = ExtResource("1_f47xf")
 
 [node name="PrivateScripts" type="Node" parent="."]
+
+[node name="StateMachine" type="Node" parent="PrivateScripts"]
+unique_name_in_owner = true
+script = ExtResource("4_homko")
 
 [node name="Aimer" type="Node" parent="PrivateScripts"]
 script = ExtResource("3_67ajk")
@@ -62,8 +69,8 @@ autostart = true
 unique_name_in_owner = true
 script = ExtResource("5_c4xvv")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="Overheater" type="Node" parent="PrivateScripts"]
 unique_name_in_owner = true
-script = ExtResource("4_homko")
+script = ExtResource("6_5se1h")
 
 [connection signal="timeout" from="PrivateScripts/AmmoSwitcher/AmmoSwitchTimer" to="PrivateScripts/AmmoSwitcher" method="_on_ammo_switch_timer_timeout"]

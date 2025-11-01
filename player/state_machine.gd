@@ -1,11 +1,14 @@
 extends Node
 
-@onready var player : PlayerBalloon = $".."
+@onready var player : PlayerBalloon = $"../.."
 
 var _is_aiming : bool = false:
 	set(value):
 		_is_aiming = value
-		%AimerNode.visible = value
+		if _is_aiming:
+			%AimerNode.modulate.a = 1
+		else:
+			%AimerNode.modulate.a = 0.5
 		%AmmoIcon.visible = not value
 
 

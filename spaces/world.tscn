@@ -1,15 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://34jjdlmu6dgd"]
+[gd_scene load_steps=10 format=3 uid="uid://34jjdlmu6dgd"]
 
+[ext_resource type="Script" uid="uid://peyfa7wq278g" path="res://spaces/player_container.gd" id="1_4q24o"]
 [ext_resource type="PackedScene" uid="uid://b5psgwewk1v3" path="res://player/player_balloon.tscn" id="1_7tu88"]
+[ext_resource type="Script" uid="uid://bt36tt4mqf6wo" path="res://spaces/round_manager.gd" id="1_v3yrf"]
+[ext_resource type="Script" uid="uid://b07gk6061450v" path="res://player/balloon_resource.gd" id="4_5syc4"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_7tu88"]
+[sub_resource type="InputEventKey" id="InputEventKey_5syc4"]
+device = -1
 keycode = 87
+unicode = 119
 
-[sub_resource type="InputEventKey" id="InputEventKey_4q24o"]
-resource_local_to_scene = true
+[sub_resource type="Resource" id="Resource_mtx37"]
+script = ExtResource("4_5syc4")
+action_event = SubResource("InputEventKey_5syc4")
+player_color = Color(0, 0.45221895, 0.37730357, 1)
+metadata/_custom_type_script = "uid://b07gk6061450v"
+
+[sub_resource type="InputEventKey" id="InputEventKey_mtx37"]
 device = -1
 keycode = 65
 unicode = 97
+
+[sub_resource type="Resource" id="Resource_6trjl"]
+script = ExtResource("4_5syc4")
+action_event = SubResource("InputEventKey_mtx37")
+metadata/_custom_type_script = "uid://b07gk6061450v"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7tu88"]
 
@@ -17,16 +32,24 @@ unicode = 97
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="PlayerBalloon" parent="." instance=ExtResource("1_7tu88")]
-position = Vector2(347, 193)
-action_event = SubResource("InputEventKey_7tu88")
+[node name="RoundManager" type="Node" parent="."]
+script = ExtResource("1_v3yrf")
 
-[node name="PlayerBalloon2" parent="." instance=ExtResource("1_7tu88")]
+[node name="PlayerContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_4q24o")
+
+[node name="PlayerBalloon" parent="PlayerContainer" instance=ExtResource("1_7tu88")]
+position = Vector2(347, 193)
+balloon = SubResource("Resource_mtx37")
+
+[node name="PlayerBalloon2" parent="PlayerContainer" instance=ExtResource("1_7tu88")]
 position = Vector2(-361, -195)
-action_event = SubResource("InputEventKey_4q24o")
+balloon = SubResource("Resource_6trjl")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 322)
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_7tu88")
@@ -34,6 +57,7 @@ shape = SubResource("WorldBoundaryShape2D_7tu88")
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(-3, -322)
 rotation = 3.1415927
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("WorldBoundaryShape2D_7tu88")
@@ -41,6 +65,7 @@ shape = SubResource("WorldBoundaryShape2D_7tu88")
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 position = Vector2(580, 0)
 rotation = 4.712389
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 shape = SubResource("WorldBoundaryShape2D_7tu88")
@@ -48,6 +73,7 @@ shape = SubResource("WorldBoundaryShape2D_7tu88")
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
 position = Vector2(-576, 0)
 rotation = 1.5707964
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 shape = SubResource("WorldBoundaryShape2D_7tu88")

@@ -1,9 +1,19 @@
 extends Node2D
 class_name VoterBalloon
 
-var action_event : InputEvent = null
+var balloon : BalloonResource = null
 
 
-func initialize(tag : String, event : InputEvent) -> void:
+func initialize(tag : String, _balloon : BalloonResource) -> void:
 	$Label.text = tag
-	action_event = event
+	balloon = _balloon
+	modulate = balloon.player_color
+
+
+func explode() -> void:
+	queue_free()
+	get_tree().get_first_node_in_group("InputChecker").remove_voter(balloon)
+
+
+func is_voting() -> bool:
+	return not %VoteTimer.is_stopped()

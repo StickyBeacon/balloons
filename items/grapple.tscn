@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvrwnnf8gg0u0"]
+
+[ext_resource type="PackedScene" uid="uid://b1tepfbuvkv0e" path="res://items/item.tscn" id="1_o3t4n"]
+[ext_resource type="Script" uid="uid://c7thi0afjh8sh" path="res://items/grapple.gd" id="2_slp1j"]
+[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="3_16mqn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_16mqn"]
+radius = 20.0
+
+[node name="Grapple" instance=ExtResource("1_o3t4n")]
+collision_layer = 0
+script = ExtResource("2_slp1j")
+
+[node name="Icon" parent="." index="1"]
+modulate = Color(0.25272983, 0.50369453, 1, 1)
+
+[node name="Icon3" type="Sprite2D" parent="Icon" index="0"]
+modulate = Color(0.25272983, 0.50369453, 1, 1)
+z_index = 10
+position = Vector2(91.29796, -54.10249)
+scale = Vector2(0.6019555, 1.3500773)
+texture = ExtResource("3_16mqn")
+
+[node name="Icon4" type="Sprite2D" parent="Icon" index="1"]
+modulate = Color(0.25272983, 0.50369453, 1, 1)
+z_index = 10
+position = Vector2(-91.29795, -54.10249)
+scale = Vector2(0.6019555, 1.3500773)
+texture = ExtResource("3_16mqn")
+
+[node name="ThingGrabber" type="Area2D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThingGrabber" index="0"]
+shape = SubResource("CircleShape2D_16mqn")
+
+[node name="GrabTimer" type="Timer" parent="." index="3"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="GrappleLine" type="Line2D" parent="." index="4"]
+unique_name_in_owner = true
+top_level = true
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0, 0, 1, 1)
+
+[connection signal="body_entered" from="ThingGrabber" to="." method="_on_thing_grabber_body_entered"]
+[connection signal="timeout" from="GrabTimer" to="." method="_on_grab_timer_timeout"]

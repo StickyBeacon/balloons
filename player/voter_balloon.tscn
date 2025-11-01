@@ -21,3 +21,8 @@ text = "Pert"
 
 [node name="VoteAction" type="Node" parent="."]
 script = ExtResource("3_0uapk")
+
+[node name="VoteTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true

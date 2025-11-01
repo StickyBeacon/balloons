@@ -5,7 +5,7 @@
 
 [node name="MainMenu" type="Node2D"]
 
-[node name="InputChecker" type="Node2D" parent="."]
+[node name="InputChecker" type="Node2D" parent="." groups=["InputChecker"]]
 script = ExtResource("1_3bvoi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -16,6 +16,9 @@ position = Vector2(5.722046e-06, 223.99998)
 scale = Vector2(8.526678, 1.2903484)
 texture = ExtResource("2_titsa")
 
-[node name="Voters" type="Node2D" parent="."]
+[node name="VoterContainer" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, 224)
+
+[node name="SelectorContainer" type="Node2D" parent="."]
+unique_name_in_owner = true

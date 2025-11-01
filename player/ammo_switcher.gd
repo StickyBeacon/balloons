@@ -1,6 +1,6 @@
 extends Node
 
-var _colors : Array[Color] = [Color.RED, Color.BLUE, Color.GREEN] 
+var _colors : Array[Color] = [Color.RED, Color.GREEN, Color.BLUE] 
 var _current_index : int = 0:
 	set(value):
 		_current_index = value
@@ -13,7 +13,6 @@ func _on_ammo_switch_timer_timeout() -> void:
 
 func switch_ammo() -> void:
 	_current_index = (_current_index + 1) % _colors.size()
-	print(_current_index)
 
 
 func get_current_index() -> int:
