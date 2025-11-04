@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5psgwewk1v3"]
+[gd_scene load_steps=12 format=3 uid="uid://b5psgwewk1v3"]
 
 [ext_resource type="Script" uid="uid://ov74tu5f2qaq" path="res://player/player_balloon.gd" id="1_5o7mk"]
 [ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="1_f47xf"]
+[ext_resource type="Material" uid="uid://ctq6nmm1vsks1" path="res://materials/neon.tres" id="3_11r0i"]
 [ext_resource type="Script" uid="uid://b1v3yn4eib51f" path="res://player/aimer.gd" id="3_67ajk"]
 [ext_resource type="Script" uid="uid://b2tqqnkabodfk" path="res://player/ammo_switcher.gd" id="4_30ftv"]
 [ext_resource type="Script" uid="uid://2yrddu6k5r8h" path="res://player/state_machine.gd" id="4_homko"]
@@ -14,6 +15,9 @@ bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5o7mk"]
 radius = 50.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5se1h"]
+polygon = PackedVector2Array(50, -50, 50, 50, -50, 50, -50, -50)
 
 [node name="PlayerBalloon" type="RigidBody2D"]
 collision_layer = 2
@@ -29,9 +33,17 @@ unique_name_in_owner = true
 scale = Vector2(0.77273715, 0.77273715)
 texture = ExtResource("1_f47xf")
 
+[node name="CharacterFace" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+material = ExtResource("3_11r0i")
+scale = Vector2(0.4471768, 0.4471768)
+texture = ExtResource("1_f47xf")
+
 [node name="AmmoIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 1
+material = ExtResource("3_11r0i")
 scale = Vector2(0.5906888, 0.5906888)
 texture = ExtResource("1_f47xf")
 
@@ -43,8 +55,10 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.5019608)
 
 [node name="AimerIcon" type="Sprite2D" parent="AimerNode"]
-position = Vector2(0, -50)
-scale = Vector2(0.2508161, 0.2508161)
+z_index = 10
+material = ExtResource("3_11r0i")
+position = Vector2(0, -69)
+scale = Vector2(0.26148868, 0.24888054)
 texture = ExtResource("1_f47xf")
 
 [node name="PrivateScripts" type="Node" parent="."]
@@ -72,5 +86,9 @@ script = ExtResource("5_c4xvv")
 [node name="Overheater" type="Node" parent="PrivateScripts"]
 unique_name_in_owner = true
 script = ExtResource("6_5se1h")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_5se1h")
 
 [connection signal="timeout" from="PrivateScripts/AmmoSwitcher/AmmoSwitchTimer" to="PrivateScripts/AmmoSwitcher" method="_on_ammo_switch_timer_timeout"]

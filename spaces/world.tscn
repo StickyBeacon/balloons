@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://34jjdlmu6dgd"]
+[gd_scene load_steps=14 format=3 uid="uid://34jjdlmu6dgd"]
 
 [ext_resource type="Script" uid="uid://peyfa7wq278g" path="res://spaces/player_container.gd" id="1_4q24o"]
 [ext_resource type="PackedScene" uid="uid://b5psgwewk1v3" path="res://player/player_balloon.tscn" id="1_7tu88"]
 [ext_resource type="Script" uid="uid://bt36tt4mqf6wo" path="res://spaces/round_manager.gd" id="1_v3yrf"]
 [ext_resource type="Script" uid="uid://b07gk6061450v" path="res://player/balloon_resource.gd" id="4_5syc4"]
 [ext_resource type="Script" uid="uid://cly2ednkigx13" path="res://spaces/map_manager.gd" id="5_mtx37"]
+[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="6_6trjl"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_5syc4"]
 device = -1
@@ -29,7 +30,22 @@ metadata/_custom_type_script = "uid://b07gk6061450v"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7tu88"]
 
+[sub_resource type="Gradient" id="Gradient_6trjl"]
+offsets = PackedFloat32Array(0, 0.7133333)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w8oon"]
+gradient = SubResource("Gradient_6trjl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
 [node name="World" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -57,7 +73,7 @@ shape = SubResource("WorldBoundaryShape2D_7tu88")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(-3, -322)
-rotation = 3.1415927
+rotation = -3.1415925
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
@@ -65,7 +81,7 @@ shape = SubResource("WorldBoundaryShape2D_7tu88")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 position = Vector2(580, 0)
-rotation = 4.712389
+rotation = -1.5707964
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
@@ -82,3 +98,39 @@ shape = SubResource("WorldBoundaryShape2D_7tu88")
 [node name="MapManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_mtx37")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-159, -279)
+scale = Vector2(9.981468, 9.981468)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_w8oon")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(450, -194)
+scale = Vector2(9.981468, 9.981468)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_w8oon")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(-278, 285)
+scale = Vector2(9.981468, 9.981468)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_w8oon")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(410, 264)
+scale = Vector2(9.981468, 9.981468)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_w8oon")
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+position = Vector2(410, 264)
+scale = Vector2(9.981468, 9.981468)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_w8oon")
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = -20
+position = Vector2(89, -23)
+scale = Vector2(22.151295, 22.151295)
+texture = ExtResource("6_6trjl")

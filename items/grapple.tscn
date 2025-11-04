@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvrwnnf8gg0u0"]
+[gd_scene load_steps=6 format=3 uid="uid://bvrwnnf8gg0u0"]
 
 [ext_resource type="PackedScene" uid="uid://b1tepfbuvkv0e" path="res://items/item.tscn" id="1_o3t4n"]
 [ext_resource type="Script" uid="uid://c7thi0afjh8sh" path="res://items/grapple.gd" id="2_slp1j"]
+[ext_resource type="Material" uid="uid://ctq6nmm1vsks1" path="res://materials/neon.tres" id="3_1yruj"]
 [ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="3_16mqn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16mqn"]
@@ -13,10 +14,12 @@ script = ExtResource("2_slp1j")
 
 [node name="Icon" parent="." index="1"]
 modulate = Color(0.25272983, 0.50369453, 1, 1)
+material = ExtResource("3_1yruj")
 
 [node name="Icon3" type="Sprite2D" parent="Icon" index="0"]
 modulate = Color(0.25272983, 0.50369453, 1, 1)
 z_index = 10
+material = ExtResource("3_1yruj")
 position = Vector2(91.29796, -54.10249)
 scale = Vector2(0.6019555, 1.3500773)
 texture = ExtResource("3_16mqn")
@@ -24,6 +27,7 @@ texture = ExtResource("3_16mqn")
 [node name="Icon4" type="Sprite2D" parent="Icon" index="1"]
 modulate = Color(0.25272983, 0.50369453, 1, 1)
 z_index = 10
+material = ExtResource("3_1yruj")
 position = Vector2(-91.29795, -54.10249)
 scale = Vector2(0.6019555, 1.3500773)
 texture = ExtResource("3_16mqn")

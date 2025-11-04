@@ -10,14 +10,17 @@ var _is_aiming : bool = false:
 		else:
 			%AimerNode.modulate.a = 0.5
 		%AmmoIcon.visible = not value
+		%CharacterFace.visible = value
 
 
 func press_button() -> void:
 	if _is_aiming:
 		shoot()
+		%AimerNode.modulate = Color.WHITE
 		%AmmoSwitcher.switch_ammo()
 		%AmmoSwitchTimer.start()
 	else:
+		%AimerNode.modulate = %AmmoIcon.modulate
 		%AmmoSwitchTimer.stop()
 		pass
 	_is_aiming = not _is_aiming

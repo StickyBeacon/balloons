@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvkydi25asxnt"]
+[gd_scene load_steps=6 format=3 uid="uid://cvkydi25asxnt"]
 
 [ext_resource type="PackedScene" uid="uid://b1tepfbuvkv0e" path="res://items/item.tscn" id="1_ykr6r"]
 [ext_resource type="Script" uid="uid://cxatrxqtd4xtc" path="res://items/bouncy_ball.gd" id="2_4r5u0"]
+[ext_resource type="Material" uid="uid://ctq6nmm1vsks1" path="res://materials/neon.tres" id="3_4r5u0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ykr6r"]
 friction = 0.0
@@ -20,6 +21,7 @@ script = ExtResource("2_4r5u0")
 
 [node name="Icon" parent="." index="1"]
 modulate = Color(0, 0.6482414, 0.15528259, 1)
+material = ExtResource("3_4r5u0")
 
 [node name="PlayerDetector" type="Area2D" parent="." index="2"]
 collision_layer = 0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://gb8gn71yduqt"]
+[gd_scene load_steps=6 format=3 uid="uid://gb8gn71yduqt"]
 
 [ext_resource type="PackedScene" uid="uid://b1tepfbuvkv0e" path="res://items/item.tscn" id="1_f0ie4"]
 [ext_resource type="Script" uid="uid://be2ttfjukscxb" path="res://items/bom.gd" id="2_w81c7"]
 [ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="3_revlv"]
+[ext_resource type="Material" uid="uid://ctq6nmm1vsks1" path="res://materials/neon.tres" id="3_vk0et"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w81c7"]
 radius = 133.82077
@@ -30,6 +31,7 @@ collision_mask = 2
 [node name="Icon2" type="Sprite2D" parent="BomArea" index="0"]
 modulate = Color(1, 0, 0, 0.41960785)
 z_index = 10
+material = ExtResource("3_vk0et")
 scale = Vector2(2.088124, 2.088124)
 texture = ExtResource("3_revlv")
 
