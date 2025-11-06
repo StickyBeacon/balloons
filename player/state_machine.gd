@@ -5,10 +5,6 @@ extends Node
 var _is_aiming : bool = false:
 	set(value):
 		_is_aiming = value
-		if _is_aiming:
-			%AimerNode.modulate.a = 1
-		else:
-			%AimerNode.modulate.a = 0.5
 		%AmmoIcon.visible = not value
 		%CharacterFace.visible = value
 
@@ -24,6 +20,7 @@ func press_button() -> void:
 		%AmmoSwitchTimer.stop()
 		pass
 	_is_aiming = not _is_aiming
+
 
 func shoot() -> void:
 	var item : Item = %AmmoContainer.get_current_item_resource().instantiate()

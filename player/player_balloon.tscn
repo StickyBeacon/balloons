@@ -1,17 +1,42 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5psgwewk1v3"]
+[gd_scene load_steps=21 format=3 uid="uid://b5psgwewk1v3"]
 
 [ext_resource type="Script" uid="uid://ov74tu5f2qaq" path="res://player/player_balloon.gd" id="1_5o7mk"]
-[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="1_f47xf"]
+[ext_resource type="Texture2D" uid="uid://cbis0kc3vf1wy" path="res://assets/images/balloon_background.png" id="2_jljb4"]
 [ext_resource type="Material" uid="uid://ctq6nmm1vsks1" path="res://materials/neon.tres" id="3_11r0i"]
 [ext_resource type="Script" uid="uid://b1v3yn4eib51f" path="res://player/aimer.gd" id="3_67ajk"]
 [ext_resource type="Script" uid="uid://b2tqqnkabodfk" path="res://player/ammo_switcher.gd" id="4_30ftv"]
+[ext_resource type="Texture2D" uid="uid://c45cnjk0bfsvc" path="res://assets/images/face_angry.png" id="4_167bi"]
 [ext_resource type="Script" uid="uid://2yrddu6k5r8h" path="res://player/state_machine.gd" id="4_homko"]
 [ext_resource type="Script" uid="uid://ckjqqd4s0svgt" path="res://player/ammo_container.gd" id="5_c4xvv"]
 [ext_resource type="Script" uid="uid://bej4gpf5hf1jw" path="res://player/overheater.gd" id="6_5se1h"]
+[ext_resource type="Texture2D" uid="uid://chl4f7f4t2xt8" path="res://assets/images/bomb_icon.png" id="6_yrtwr"]
+[ext_resource type="Texture2D" uid="uid://bgggbudll0ms5" path="res://assets/images/bouncy_icon.png" id="7_jo1ww"]
+[ext_resource type="Texture2D" uid="uid://dqno65b623mav" path="res://assets/images/grapple_icon.png" id="8_j6bnt"]
+[ext_resource type="Texture2D" uid="uid://b3ta5w1co8lq" path="res://assets/images/hp_bar_1.png" id="8_jji2b"]
+[ext_resource type="Texture2D" uid="uid://b8505ikbhleed" path="res://assets/images/hp_bar_2.png" id="9_y4l6w"]
+[ext_resource type="Texture2D" uid="uid://cfxjndppfjydn" path="res://assets/images/hp_bar_3.png" id="10_if3jr"]
+[ext_resource type="Texture2D" uid="uid://bwhf7ga2oduhq" path="res://assets/images/cannon.png" id="11_jji2b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c4xvv"]
 friction = 0.0
 bounce = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jji2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_yrtwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jo1ww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j6bnt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5o7mk"]
 radius = 50.0
@@ -30,36 +55,39 @@ script = ExtResource("1_5o7mk")
 
 [node name="BalloonBackground" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-scale = Vector2(0.77273715, 0.77273715)
-texture = ExtResource("1_f47xf")
+texture = ExtResource("2_jljb4")
 
 [node name="CharacterFace" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 1
 material = ExtResource("3_11r0i")
-scale = Vector2(0.4471768, 0.4471768)
-texture = ExtResource("1_f47xf")
+texture = ExtResource("4_167bi")
 
-[node name="AmmoIcon" type="Sprite2D" parent="."]
+[node name="AmmoIcon" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-z_index = 1
-material = ExtResource("3_11r0i")
-scale = Vector2(0.5906888, 0.5906888)
-texture = ExtResource("1_f47xf")
+sprite_frames = SubResource("SpriteFrames_jji2b")
+
+[node name="PlayerHP1" type="Sprite2D" parent="."]
+texture = ExtResource("8_jji2b")
+
+[node name="PlayerHP2" type="Sprite2D" parent="."]
+texture = ExtResource("9_y4l6w")
+
+[node name="PlayerHP3" type="Sprite2D" parent="."]
+texture = ExtResource("10_if3jr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5o7mk")
 
 [node name="AimerNode" type="Node2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.5019608)
 
 [node name="AimerIcon" type="Sprite2D" parent="AimerNode"]
 z_index = 10
 material = ExtResource("3_11r0i")
 position = Vector2(0, -69)
-scale = Vector2(0.26148868, 0.24888054)
-texture = ExtResource("1_f47xf")
+texture = ExtResource("11_jji2b")
 
 [node name="PrivateScripts" type="Node" parent="."]
 

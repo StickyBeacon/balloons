@@ -5,7 +5,6 @@ var balloon : BalloonResource = null
 
 
 func initialize(tag : String, _balloon : BalloonResource) -> void:
-	$Label.text = tag
 	balloon = _balloon
 	modulate = balloon.player_color
 

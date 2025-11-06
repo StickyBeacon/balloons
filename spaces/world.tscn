@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://34jjdlmu6dgd"]
+[gd_scene load_steps=13 format=3 uid="uid://34jjdlmu6dgd"]
 
 [ext_resource type="Script" uid="uid://peyfa7wq278g" path="res://spaces/player_container.gd" id="1_4q24o"]
 [ext_resource type="PackedScene" uid="uid://b5psgwewk1v3" path="res://player/player_balloon.tscn" id="1_7tu88"]
 [ext_resource type="Script" uid="uid://bt36tt4mqf6wo" path="res://spaces/round_manager.gd" id="1_v3yrf"]
 [ext_resource type="Script" uid="uid://b07gk6061450v" path="res://player/balloon_resource.gd" id="4_5syc4"]
 [ext_resource type="Script" uid="uid://cly2ednkigx13" path="res://spaces/map_manager.gd" id="5_mtx37"]
-[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="6_6trjl"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_5syc4"]
 device = -1
@@ -43,6 +42,7 @@ fill_to = Vector2(1, 1)
 [node name="World" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -100,37 +100,36 @@ unique_name_in_owner = true
 script = ExtResource("5_mtx37")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(-159, -279)
 scale = Vector2(9.981468, 9.981468)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_w8oon")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(450, -194)
 scale = Vector2(9.981468, 9.981468)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_w8oon")
 
 [node name="PointLight2D3" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(-278, 285)
 scale = Vector2(9.981468, 9.981468)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_w8oon")
 
 [node name="PointLight2D4" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(410, 264)
 scale = Vector2(9.981468, 9.981468)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_w8oon")
 
 [node name="PointLight2D5" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(410, 264)
 scale = Vector2(9.981468, 9.981468)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_w8oon")
-
-[node name="Icon" type="Sprite2D" parent="."]
-z_index = -20
-position = Vector2(89, -23)
-scale = Vector2(22.151295, 22.151295)
-texture = ExtResource("6_6trjl")

@@ -26,6 +26,13 @@ func set_balloon(_balloon : BalloonResource):
 
 func get_hit() -> void:
 	print("%s: Ow! I've been hit!" % name)
+	match current_hp:
+		3:
+			$PlayerHP3.visible = false
+		2:
+			$PlayerHP2.visible = false
+		_:
+			$PlayerHP1.visible = false
 	current_hp -= 1
 	if current_hp <= 0:
 		explode()
