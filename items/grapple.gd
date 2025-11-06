@@ -22,6 +22,9 @@ func _on_grab_timer_timeout() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	%GrappleLine.points[0] = global_position
+	%GrappleLine.points[1] = player.global_position
+	
 	if grab_object:
 		global_position = grab_object.global_position
 		pull_to_target()
@@ -52,5 +55,3 @@ func pull_to_target() -> void:
 	
 	var grab_dir = (global_position - player.global_position).normalized()
 	player.apply_central_force(grab_dir*GRAB_FORCE)
-	%GrappleLine.points[0] = global_position
-	%GrappleLine.points[1] = player.global_position

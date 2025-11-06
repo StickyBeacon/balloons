@@ -25,3 +25,7 @@ func explode() -> void:
 		balloon.apply_central_impulse(force_dir*EXPLODE_FORCE)
 		balloon.get_hit()
 	queue_free()
+
+
+func _process(_delta: float) -> void:
+	%TextureProgressBar.value = int((1 - (%BomTimer.time_left/3))*100)

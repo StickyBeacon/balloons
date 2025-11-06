@@ -2,24 +2,10 @@ extends Node
 
 @onready var player : PlayerBalloon = $"../.."
 
-var _is_aiming : bool = false:
-	set(value):
-		_is_aiming = value
-		%AmmoIcon.visible = not value
-		%CharacterFace.visible = value
-
 
 func press_button() -> void:
-	if _is_aiming:
-		shoot()
-		%AimerNode.modulate = Color.WHITE
-		%AmmoSwitcher.switch_ammo()
-		%AmmoSwitchTimer.start()
-	else:
-		%AimerNode.modulate = %AmmoIcon.modulate
-		%AmmoSwitchTimer.stop()
-		pass
-	_is_aiming = not _is_aiming
+	shoot()
+	%AmmoSwitcher.switch_ammo()
 
 
 func shoot() -> void:

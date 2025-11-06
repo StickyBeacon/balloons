@@ -4,12 +4,7 @@ var _colors : Array[Color] = [Color.RED, Color.GREEN, Color.BLUE]
 var _current_index : int = 0:
 	set(value):
 		_current_index = value
-		%AmmoIcon.modulate = _colors[_current_index]
-		%AmmoIcon.frame = value
-
-
-func _on_ammo_switch_timer_timeout() -> void:
-	switch_ammo()
+		%AimerNode.modulate = _colors[_current_index]
 
 
 func switch_ammo() -> void:
