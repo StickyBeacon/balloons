@@ -1,11 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvrwnnf8gg0u0"]
+[gd_scene load_steps=9 format=3 uid="uid://bvrwnnf8gg0u0"]
 
 [ext_resource type="PackedScene" uid="uid://b1tepfbuvkv0e" path="res://items/item.tscn" id="1_o3t4n"]
 [ext_resource type="Script" uid="uid://c7thi0afjh8sh" path="res://items/grapple.gd" id="2_slp1j"]
 [ext_resource type="Texture2D" uid="uid://dqno65b623mav" path="res://assets/images/grapple_icon.png" id="3_16mqn"]
+[ext_resource type="AudioStream" uid="uid://bpiyg8n3vw2jh" path="res://assets/audio/grapple_spawn.wav" id="4_j5b5b"]
+[ext_resource type="AudioStream" uid="uid://nf2rcebra8v6" path="res://assets/audio/grapple_grab.wav" id="5_t5w6d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16mqn"]
 radius = 20.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_m5gtb"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("4_j5b5b")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hqtkf"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("5_t5w6d")
 
 [node name="Grapple" instance=ExtResource("1_o3t4n")]
 collision_layer = 0
@@ -29,8 +41,17 @@ one_shot = true
 [node name="GrappleLine" type="Line2D" parent="." index="4"]
 unique_name_in_owner = true
 top_level = true
+z_index = 10
 points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(0, 0, 1, 1)
+
+[node name="SpawnSoundEffect" type="AudioStreamPlayer" parent="." index="5"]
+stream = SubResource("AudioStreamRandomizer_m5gtb")
+autoplay = true
+
+[node name="GrabSoundEffect" type="AudioStreamPlayer" parent="." index="6"]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_hqtkf")
 
 [connection signal="body_entered" from="ThingGrabber" to="." method="_on_thing_grabber_body_entered"]
 [connection signal="timeout" from="GrabTimer" to="." method="_on_grab_timer_timeout"]

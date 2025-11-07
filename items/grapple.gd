@@ -6,6 +6,7 @@ const GRAB_FORCE : float = 3000
 var grab_object : Node2D = null
 var grab_position : Vector2 = Vector2.ZERO
 var player : PlayerBalloon = null
+var has_grabbed : bool = false
 
 
 func initialise(_player : PlayerBalloon) -> void:
@@ -34,18 +35,23 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_thing_grabber_body_entered(body: Node2D) -> void:
+	if has_grabbed:
+		return
+	
 	if body == player or body is Grapple:
 		return
 		
 		
 	if not grab_object:
+		has_grabbed = true
+		%GrabSoundEffect.play()
 		if body is PlayerBalloon or body is Item:
 			grab_object = body
 		else:
 			grab_position = global_position
 		%GrabTimer.start()
 		linear_velocity = Vector2.ZERO
-		$Icon.visible = false
+		#$Icon.visible = false
 
 
 func pull_to_target() -> void:

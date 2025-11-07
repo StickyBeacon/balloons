@@ -17,6 +17,7 @@ func initialise(_player : PlayerBalloon) -> void:
 
 func _on_body_entered(_body: Node) -> void:
 	current_bounces -= 1
+	%BouncyBounce.play()
 	if current_bounces <= 0:
 		explode()
 
