@@ -15,6 +15,7 @@ unicode = 119
 script = ExtResource("4_5syc4")
 action_event = SubResource("InputEventKey_5syc4")
 player_color = Color(0, 0.45221895, 0.37730357, 1)
+player_face = 5
 metadata/_custom_type_script = "uid://b07gk6061450v"
 
 [sub_resource type="InputEventKey" id="InputEventKey_mtx37"]

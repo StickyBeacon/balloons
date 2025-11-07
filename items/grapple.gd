@@ -13,6 +13,8 @@ func initialise(_player : PlayerBalloon) -> void:
 	linear_velocity = Vector2.UP.rotated(rotation)*SHOOT_FORCE
 	player = _player
 
+const grapple_particle : Resource = preload("res://particles/grapple_particle.tscn")
+
 
 func explode() -> void:
 	queue_free()
@@ -25,6 +27,11 @@ func _on_grab_timer_timeout() -> void:
 func _physics_process(_delta: float) -> void:
 	%GrappleLine.points[0] = global_position
 	%GrappleLine.points[1] = player.global_position
+	
+	if has_grabbed:
+		if not player or (not grab_object and grab_position == Vector2.ZERO):
+			explode()
+			return
 	
 	if grab_object:
 		global_position = grab_object.global_position
@@ -51,13 +58,12 @@ func _on_thing_grabber_body_entered(body: Node2D) -> void:
 			grab_position = global_position
 		%GrabTimer.start()
 		linear_velocity = Vector2.ZERO
-		#$Icon.visible = false
+		var part : GPUParticles2D = grapple_particle.instantiate()
+		get_tree().current_scene.add_child(part)
+		part.global_position = global_position
+		part.global_rotation = global_rotation
 
 
 func pull_to_target() -> void:
-	if not player or (not grab_object and grab_position == Vector2.ZERO):
-		explode()
-		return
-	
 	var grab_dir = (global_position - player.global_position).normalized()
 	player.apply_central_force(grab_dir*GRAB_FORCE)

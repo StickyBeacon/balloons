@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2881q6hld1fb"]
+
+[ext_resource type="Texture2D" uid="uid://cbis0kc3vf1wy" path="res://assets/images/balloon_background.png" id="1_oucsa"]
+[ext_resource type="Script" uid="uid://4c4m77gidsy8" path="res://particles/particle.gd" id="2_un0g6"]
+[ext_resource type="AudioStream" uid="uid://dt4h6sr7etnvr" path="res://assets/audio/damaged.wav" id="3_un0g6"]
+
+[sub_resource type="Curve" id="Curve_oucsa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.1590909, 0.41573036), 0.0, 0.0, 0, 0, Vector2(0.28030303, 0.8539326), 0.0, 0.0, 0, 0, Vector2(0.5151515, 0.17977536), 0.0, 0.0, 0, 0, Vector2(0.6515152, 0.57303375), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.123595595), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_un0g6"]
+curve = SubResource("Curve_oucsa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rc0qs"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 282.35
+initial_velocity_max = 282.35
+tangential_accel_min = -1000.0
+tangential_accel_max = -1000.0
+scale_min = 0.099999994
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_un0g6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rc0qs"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("3_un0g6")
+
+[node name="PlayerHurtParticle" type="GPUParticles2D"]
+process_mode = 3
+texture = ExtResource("1_oucsa")
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rc0qs")
+script = ExtResource("2_un0g6")
+
+[node name="PlayerDamaged" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rc0qs")
+autoplay = true

@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://p3fhnmdoaa1n"]
+
+[ext_resource type="Texture2D" uid="uid://bgggbudll0ms5" path="res://assets/images/bouncy_icon.png" id="1_pcik2"]
+[ext_resource type="Script" uid="uid://4c4m77gidsy8" path="res://particles/particle.gd" id="2_23ah5"]
+[ext_resource type="AudioStream" uid="uid://b06nbbvomb48n" path="res://assets/audio/bouncy_bounce.wav" id="3_23ah5"]
+
+[sub_resource type="Curve" id="Curve_v7aew"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.89393944, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7yhiv"]
+curve = SubResource("Curve_v7aew")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c7df0"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 136.29
+initial_velocity_max = 302.35
+scale_curve = SubResource("CurveTexture_7yhiv")
+color = Color(0, 1, 0, 1)
+hue_variation_min = -0.020000022
+hue_variation_max = 0.35999995
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v7aew"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("3_23ah5")
+
+[node name="BouncyParticle" type="GPUParticles2D"]
+amount = 3
+texture = ExtResource("1_pcik2")
+lifetime = 0.5
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_c7df0")
+script = ExtResource("2_23ah5")
+
+[node name="BouncyBounce" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = SubResource("AudioStreamRandomizer_v7aew")
+autoplay = true

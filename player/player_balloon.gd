@@ -5,6 +5,8 @@ class_name PlayerBalloon
 const STARTING_HP : int = 3
 var current_hp = STARTING_HP
 
+const hurt_particle = preload("res://particles/player_hurt_particle.tscn")
+
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventKey or event is InputEventJoypadButton) and event.is_pressed():
@@ -18,6 +20,7 @@ func _input(event: InputEvent) -> void:
 func set_balloon(_balloon : BalloonResource):
 	balloon = _balloon
 	%BalloonBackground.modulate = balloon.player_color
+	%CharacterFace.texture = load(PlayerManager.player_faces[balloon.player_face])
 	if balloon.items.is_empty():
 		return
 	for i in range(3):
@@ -25,7 +28,11 @@ func set_balloon(_balloon : BalloonResource):
 
 
 func get_hit() -> void:
-	print("%s: Ow! I've been hit!" % name)
+	
+	var part = hurt_particle.instantiate()
+	get_tree().current_scene.add_child(part)
+	part.global_position = global_position
+	
 	match current_hp:
 		3:
 			$PlayerHP3.visible = false

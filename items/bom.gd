@@ -5,6 +5,7 @@ const FORCE : float = 200
 const EXPLODE_FORCE : float = 2000
 
 var player : PlayerBalloon = null
+const explode_particle : Resource = preload("res://particles/bom_explode_particle.tscn")
 
 
 func initialise(_player : PlayerBalloon) -> void:
@@ -24,6 +25,11 @@ func explode() -> void:
 		var force_dir = (balloon.global_position - global_position).normalized()
 		balloon.apply_central_impulse(force_dir*EXPLODE_FORCE)
 		balloon.get_hit()
+	
+	var poof = explode_particle.instantiate()
+	get_tree().current_scene.add_child(poof)
+	poof.global_position = global_position
+	
 	queue_free()
 
 

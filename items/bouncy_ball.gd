@@ -7,6 +7,8 @@ var current_bounces = MAX_BOUNCE
 
 var player : PlayerBalloon = null
 
+const bounce_particle : Resource = preload("res://particles/bouncy_particle.tscn")
+
 
 func initialise(_player : PlayerBalloon) -> void:
 	linear_velocity = Vector2.UP.rotated(rotation)*FORCE
@@ -17,7 +19,9 @@ func initialise(_player : PlayerBalloon) -> void:
 
 func _on_body_entered(_body: Node) -> void:
 	current_bounces -= 1
-	%BouncyBounce.play()
+	var particle = bounce_particle.instantiate()
+	get_tree().current_scene.add_child(particle)
+	particle.global_position = global_position
 	if current_bounces <= 0:
 		explode()
 
