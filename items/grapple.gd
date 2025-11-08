@@ -25,6 +25,9 @@ func _on_grab_timer_timeout() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if not player:
+		return
+	
 	if has_grabbed:
 		if not player or (not grab_object and grab_position == Vector2.ZERO):
 			explode()
