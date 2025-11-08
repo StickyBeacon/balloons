@@ -40,7 +40,7 @@ shape = SubResource("CircleShape2D_ykr6r")
 
 [node name="BouncySpawn" type="AudioStreamPlayer" parent="." index="3"]
 stream = SubResource("AudioStreamRandomizer_xwh71")
-volume_db = 0.5
+volume_db = -10.0
 autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

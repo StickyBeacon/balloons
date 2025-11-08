@@ -1,19 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbtadf3vqe0xq"]
+[gd_scene load_steps=7 format=3 uid="uid://dbtadf3vqe0xq"]
 
 [ext_resource type="Script" uid="uid://1thtintp6t7b" path="res://player/selector_balloon.gd" id="1_w68n6"]
-[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="2_dgc88"]
+[ext_resource type="Material" uid="uid://ctq6nmm1vsks1" path="res://materials/neon.tres" id="2_3nm8t"]
+[ext_resource type="Texture2D" uid="uid://cbis0kc3vf1wy" path="res://assets/images/balloon_background.png" id="3_wpusu"]
+[ext_resource type="Texture2D" uid="uid://c45cnjk0bfsvc" path="res://assets/images/face_angry.png" id="4_jjhi6"]
+[ext_resource type="AudioStream" uid="uid://ckn7y0ghae8m2" path="res://assets/audio/laugh2.wav" id="5_wpusu"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jjhi6"]
+streams_count = 1
+stream_0/stream = ExtResource("5_wpusu")
 
 [node name="SelectorBalloon" type="Node2D"]
 script = ExtResource("1_w68n6")
 
-[node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 0.39215687)
-scale = Vector2(0.34861854, 0.34861854)
-texture = ExtResource("2_dgc88")
+[node name="Icon2" type="Sprite2D" parent="."]
+material = ExtResource("2_3nm8t")
+texture = ExtResource("3_wpusu")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -16.0
-offset_top = -14.0
-offset_right = 24.0
-offset_bottom = 9.0
-text = "Pert"
+[node name="CharacterFace" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+material = ExtResource("2_3nm8t")
+texture = ExtResource("4_jjhi6")
+
+[node name="Noise" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_jjhi6")
+volume_db = -10.0

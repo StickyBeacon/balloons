@@ -47,6 +47,7 @@ default_color = Color(0, 0, 1, 1)
 
 [node name="SpawnSoundEffect" type="AudioStreamPlayer" parent="." index="5"]
 stream = SubResource("AudioStreamRandomizer_m5gtb")
+volume_db = -10.0
 autoplay = true
 
 [node name="GrabSoundEffect" type="AudioStreamPlayer" parent="." index="6"]

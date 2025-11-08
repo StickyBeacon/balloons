@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbis0kc3vf1wy" path="res://assets/images/balloon_background.png" id="1_oucsa"]
 [ext_resource type="Script" uid="uid://4c4m77gidsy8" path="res://particles/particle.gd" id="2_un0g6"]
-[ext_resource type="AudioStream" uid="uid://dt4h6sr7etnvr" path="res://assets/audio/damaged.wav" id="3_un0g6"]
+[ext_resource type="AudioStream" uid="uid://bxtvy7306vm6q" path="res://assets/audio/player_hurt_better.wav" id="3_un0g6"]
 
 [sub_resource type="Curve" id="Curve_oucsa"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.1590909, 0.41573036), 0.0, 0.0, 0, 0, Vector2(0.28030303, 0.8539326), 0.0, 0.0, 0, 0, Vector2(0.5151515, 0.17977536), 0.0, 0.0, 0, 0, Vector2(0.6515152, 0.57303375), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.123595595), 0.0, 0.0, 0, 0]

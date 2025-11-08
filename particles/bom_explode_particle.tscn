@@ -40,4 +40,5 @@ script = ExtResource("1_nvh6b")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_4jbeo")
+volume_db = -10.0
 autoplay = true

@@ -25,13 +25,13 @@ func _on_grab_timer_timeout() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	%GrappleLine.points[0] = global_position
-	%GrappleLine.points[1] = player.global_position
-	
 	if has_grabbed:
 		if not player or (not grab_object and grab_position == Vector2.ZERO):
 			explode()
 			return
+	
+	%GrappleLine.points[0] = global_position
+	%GrappleLine.points[1] = player.global_position
 	
 	if grab_object:
 		global_position = grab_object.global_position

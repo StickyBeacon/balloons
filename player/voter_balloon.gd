@@ -4,9 +4,10 @@ class_name VoterBalloon
 var balloon : BalloonResource = null
 
 
-func initialize(tag : String, _balloon : BalloonResource) -> void:
+func initialize(_balloon : BalloonResource) -> void:
 	balloon = _balloon
-	modulate = balloon.player_color
+	$Icon.modulate = balloon.player_color
+	%CharacterFace.texture = load(PlayerManager.player_faces[balloon.player_face])
 
 
 func explode() -> void:

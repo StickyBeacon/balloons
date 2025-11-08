@@ -25,6 +25,7 @@ func pop() -> void:
 	tween = create_tween()
 	tween.tween_property(voter, "scale", SCALE_UP, DURATION).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(voter, "scale", SCALE_NORMAL, DURATION).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	%Noise.play()
 
 
 func _process(delta: float) -> void:

@@ -38,13 +38,15 @@ func touch_player(tag : String, event : InputEvent) -> void:
 	for child in children:
 		if child.name == tag:
 			increase_size(child,0.3)
+			child.pop()
 			return
 
 	var player : SelectorBalloon = selector_balloon_res.instantiate()
 	%SelectorContainer.add_child(player)
-	player.global_position = Vector2((randf()-0.5)*300,(randf()-0.5)*300) + Vector2(0,-100)
-	player.initialize(tag, generate_new_balloon(event))
+	player.global_position = Vector2((randf()-0.5)*800,(randf()-0.5)*300) + Vector2(0,-100)
+	player.initialize(generate_new_balloon(event))
 	player.name = tag
+	player.pop()
 
 
 func increase_size(child : SelectorBalloon, amount : float) -> void:
@@ -63,7 +65,8 @@ func increase_size(child : SelectorBalloon, amount : float) -> void:
 func generate_new_balloon(event : InputEvent) -> BalloonResource:
 	var balloon = BalloonResource.new()
 	balloon.action_event = event
-	balloon.player_color = Color(randf(),randf(),randf())
+	balloon.player_color = Color(randf()*0.8 + 0.1,randf()*0.8 + 0.1,randf()*0.8 + 0.1)
+	balloon.player_face = randi_range(0,11)
 	return balloon
 
 
@@ -98,7 +101,7 @@ func start_game() -> void:
 
 func spawn_voter(child : SelectorBalloon) -> void:
 	var voter : VoterBalloon = voter_balloon_res.instantiate()
-	voter.initialize(child.name, child.balloon)
+	voter.initialize(child.balloon)
 	%VoterContainer.add_child(voter)
 	voter.position = Vector2((randf()-0.5)*1000, 0)
 	chosen_balloons.push_back(child.balloon)

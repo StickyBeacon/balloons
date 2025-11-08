@@ -22,3 +22,17 @@ func add_player(balloon_resource : BalloonResource):
 
 func get_player_resources() -> Array[BalloonResource]:
 	return player_dict
+
+
+func get_winning_player() -> BalloonResource:
+	var best_score = -1
+	var balloon = null
+	for thing : BalloonResource in player_dict:
+		if thing.points > best_score:
+			balloon = thing
+			best_score = thing.points
+	return balloon
+
+
+func clear_players() -> void:
+	player_dict.clear()

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://djwepahaub6vs"]
+
+[ext_resource type="PackedScene" uid="uid://c3orcgqf86l75" path="res://spaces/basic_map.tscn" id="1_hu1iy"]
+[ext_resource type="PackedScene" uid="uid://bcjfxmml017j6" path="res://spaces/obstacles/obstacle.tscn" id="2_ro4r6"]
+
+[node name="BasicMap" instance=ExtResource("1_hu1iy")]
+
+[node name="Obstacle" parent="." index="4" instance=ExtResource("2_ro4r6")]
+position = Vector2(0, -148)
+scale = Vector2(-11.863141, -25.686947)

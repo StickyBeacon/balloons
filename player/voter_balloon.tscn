@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://8jsdqtei6228"]
+[gd_scene load_steps=8 format=3 uid="uid://8jsdqtei6228"]
 
 [ext_resource type="Script" uid="uid://bc07w0xffnix4" path="res://player/voter_balloon.gd" id="1_kjh50"]
 [ext_resource type="Material" uid="uid://ctq6nmm1vsks1" path="res://materials/neon.tres" id="2_rhxo1"]
 [ext_resource type="Script" uid="uid://86n23fca6om1" path="res://player/vote_action.gd" id="3_0uapk"]
 [ext_resource type="Texture2D" uid="uid://cbis0kc3vf1wy" path="res://assets/images/balloon_background.png" id="3_rhxo1"]
+[ext_resource type="Texture2D" uid="uid://c45cnjk0bfsvc" path="res://assets/images/face_angry.png" id="4_aebpu"]
+[ext_resource type="AudioStream" uid="uid://bwnt6epfcm6vn" path="res://assets/audio/laugh.wav" id="6_vroc6"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aebpu"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("6_vroc6")
 
 [node name="VoterBalloon" type="Node2D"]
 script = ExtResource("1_kjh50")
@@ -12,6 +19,12 @@ script = ExtResource("1_kjh50")
 material = ExtResource("2_rhxo1")
 texture = ExtResource("3_rhxo1")
 
+[node name="CharacterFace" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+material = ExtResource("2_rhxo1")
+texture = ExtResource("4_aebpu")
+
 [node name="VoteAction" type="Node" parent="."]
 script = ExtResource("3_0uapk")
 
@@ -19,3 +32,8 @@ script = ExtResource("3_0uapk")
 unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
+
+[node name="Noise" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_aebpu")
+volume_db = -10.0

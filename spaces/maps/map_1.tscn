@@ -7,11 +7,3 @@
 
 [node name="Obstacle" parent="." index="4" instance=ExtResource("2_6k8kg")]
 scale = Vector2(24.861572, 7.3957143)
-
-[node name="Obstacle2" parent="." index="5" instance=ExtResource("2_6k8kg")]
-position = Vector2(389, -201)
-scale = Vector2(3.347606, 2.4309156)
-
-[node name="Obstacle3" parent="." index="6" instance=ExtResource("2_6k8kg")]
-position = Vector2(-393.99994, 180)
-scale = Vector2(3.347606, 2.4309156)

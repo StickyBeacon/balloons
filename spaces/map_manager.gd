@@ -1,6 +1,6 @@
 extends Node2D
 
-const maps : Array[Resource] = [preload("res://spaces/basic_map.tscn"), preload("res://spaces/maps/map_1.tscn")]
+const maps : Array[Resource] = [preload("res://spaces/basic_map.tscn"), preload("res://spaces/maps/map_1.tscn"), preload("res://spaces/maps/map_2.tscn"), preload("res://spaces/maps/map_3.tscn"), preload("res://spaces/maps/map_4.tscn")]
 
 
 func change_map() -> void:

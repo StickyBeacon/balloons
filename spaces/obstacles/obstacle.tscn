@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcjfxmml017j6"]
+[gd_scene load_steps=4 format=3 uid="uid://bcjfxmml017j6"]
 
-[ext_resource type="Texture2D" uid="uid://d0c3yt2ugmg7e" path="res://icon.svg" id="1_yxsy6"]
+[sub_resource type="Gradient" id="Gradient_ch134"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yxsy6"]
+gradient = SubResource("Gradient_ch134")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a18s1"]
 
@@ -8,8 +11,8 @@
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.15581696, 0.15581696)
-texture = ExtResource("1_yxsy6")
+scale = Vector2(0.31145483, 0.31145483)
+texture = SubResource("GradientTexture2D_yxsy6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_a18s1")

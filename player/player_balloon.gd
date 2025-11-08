@@ -30,6 +30,7 @@ func set_balloon(_balloon : BalloonResource):
 func get_hit() -> void:
 	
 	var part = hurt_particle.instantiate()
+	part.modulate = balloon.player_color
 	get_tree().current_scene.add_child(part)
 	part.global_position = global_position
 	
