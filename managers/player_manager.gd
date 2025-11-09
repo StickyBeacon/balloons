@@ -35,4 +35,6 @@ func get_winning_player() -> BalloonResource:
 
 
 func clear_players() -> void:
+	for balloon in player_dict:
+		balloon.points = 0
 	player_dict.clear()

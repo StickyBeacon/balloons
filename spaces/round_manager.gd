@@ -29,7 +29,8 @@ func player_died(node : PlayerBalloon) -> void:
 		ItemContainer.clear_items()
 		winner.balloon.points += 1
 		print("%s: %s has %s points!" % [name, winner.name, winner.balloon.points])
-		if winner.balloon.points >= 5:
+		if winner.balloon.points >= 3:
+			winner.balloon.wins += 1
 			print("%s: %s has won the game!" % [name, winner.name])
 			end_game()
 			return
@@ -49,7 +50,6 @@ func end_game() -> void:
 	await get_tree().create_timer(0.1).timeout
 	%Laugh.play()
 	await get_tree().create_timer(3).timeout
-	PlayerManager.clear_players()
 	get_tree().change_scene_to_file("res://spaces/main_menu.tscn")
 
 

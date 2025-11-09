@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="balloons"
-run/main_scene="uid://34jjdlmu6dgd"
+config/tags=PackedStringArray("2d", "gamejam")
+run/main_scene="uid://7q2mbwdkvitd"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false

@@ -11,6 +11,13 @@ const MIN_SCALE : float = 0.05
 var chosen_balloons : Array[BalloonResource]
 
 
+func _ready() -> void:
+	if not PlayerManager.player_dict.is_empty():
+		for player : BalloonResource in PlayerManager.player_dict:
+			spawn_voter(player)
+		PlayerManager.clear_players()
+
+
 func _input(event: InputEvent) -> void:
 	var is_allowed = event is InputEventKey \
 					or event is InputEventJoypadButton
@@ -55,7 +62,7 @@ func increase_size(child : SelectorBalloon, amount : float) -> void:
 
 	if child.scale.x > MAX_SCALE:
 		print("%s: I've been chosen!" % name)
-		spawn_voter(child)
+		spawn_voter(child.balloon)
 		child.queue_free()
 	elif child.scale.x < MIN_SCALE:
 		# TODO POP THE BALLOOn
@@ -99,12 +106,12 @@ func start_game() -> void:
 	get_tree().change_scene_to_file("res://spaces/world.tscn")
 
 
-func spawn_voter(child : SelectorBalloon) -> void:
+func spawn_voter(balloon : BalloonResource) -> void:
 	var voter : VoterBalloon = voter_balloon_res.instantiate()
-	voter.initialize(child.balloon)
+	voter.initialize(balloon)
 	%VoterContainer.add_child(voter)
 	voter.position = Vector2((randf()-0.5)*1000, 0)
-	chosen_balloons.push_back(child.balloon)
+	chosen_balloons.push_back(balloon)
 
 
 func remove_voter(balloon : BalloonResource) -> void:

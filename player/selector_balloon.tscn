@@ -19,7 +19,6 @@ texture = ExtResource("3_wpusu")
 
 [node name="CharacterFace" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-z_index = 1
 material = ExtResource("2_3nm8t")
 texture = ExtResource("4_jjhi6")
 
