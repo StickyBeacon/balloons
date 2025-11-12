@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://dm8omm7hf7a3y"]
+
+[ext_resource type="Texture2D" uid="uid://cic3tpvlrb7or" path="res://assets/images/party_icon.png" id="1_7ocfa"]
+[ext_resource type="Script" uid="uid://cen3mj7qnlmw6" path="res://items/party_popper.gd" id="3_tp83u"]
+[ext_resource type="AudioStream" uid="uid://doxoouorrhrgq" path="res://assets/audio/part_popper.wav" id="4_tp83u"]
+
+[sub_resource type="Curve" id="Curve_tp83u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.79545456, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7eldm"]
+curve = SubResource("Curve_tp83u")
+
+[sub_resource type="Curve" id="Curve_hs5t5"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nca7d"]
+curve = SubResource("Curve_hs5t5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mgesc"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+angle_min = 1.0728835e-05
+angle_max = 720.0
+spread = 180.0
+angular_velocity_min = -321.88
+angular_velocity_max = 372.70996
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_7eldm")
+scale_over_velocity_curve = SubResource("CurveTexture_nca7d")
+color = Color(1, 0, 1, 1)
+hue_variation_min = -0.08000002
+hue_variation_max = 0.079999976
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tp83u"]
+radius = 130.0346
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7eldm"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("4_tp83u")
+
+[node name="PartyPopper" type="GPUParticles2D"]
+amount = 30
+texture = ExtResource("1_7ocfa")
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_mgesc")
+script = ExtResource("3_tp83u")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tp83u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7eldm")
+volume_db = -10.0
+autoplay = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(4.2, 4.2)
+texture = ExtResource("1_7ocfa")

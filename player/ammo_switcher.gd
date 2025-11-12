@@ -1,6 +1,6 @@
 extends Node
 
-var _colors : Array[Color] = [Color.RED, Color.GREEN, Color.BLUE] 
+var _colors : Array[Color] = [Color.RED, Color.GREEN, Color.BLUE, Color.CYAN, Color.MAGENTA, Color.YELLOW] 
 var _current_index : int = 0:
 	set(value):
 		_current_index = value

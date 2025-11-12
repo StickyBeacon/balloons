@@ -61,11 +61,9 @@ func increase_size(child : SelectorBalloon, amount : float) -> void:
 	child.scale.y += amount
 
 	if child.scale.x > MAX_SCALE:
-		print("%s: I've been chosen!" % name)
 		spawn_voter(child.balloon)
 		child.queue_free()
 	elif child.scale.x < MIN_SCALE:
-		# TODO POP THE BALLOOn
 		child.queue_free()
 
 
@@ -112,6 +110,7 @@ func spawn_voter(balloon : BalloonResource) -> void:
 	%VoterContainer.add_child(voter)
 	voter.position = Vector2((randf()-0.5)*1000, 0)
 	chosen_balloons.push_back(balloon)
+	print("%s: Chose balloon with %s and %s" % [name, balloon.player_color, balloon.player_face])
 
 
 func remove_voter(balloon : BalloonResource) -> void:

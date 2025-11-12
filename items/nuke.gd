@@ -1,22 +1,15 @@
 extends Item
-class_name Bom
+class_name Nuke
 
-const FORCE : float = 200
-const EXPLODE_FORCE : float = 1000
-
-var player : PlayerBalloon = null
-const explode_particle : Resource = preload("res://particles/bom_explode_particle.tscn")
+const FORCE : float = 50
+const EXPLODE_FORCE : float = 2000
+const explode_particle : Resource = preload("res://particles/nuke_explode.tscn")
 
 
-func initialise(_player : PlayerBalloon) -> void:
+func initialise(player : PlayerBalloon) -> void:
 	linear_velocity = Vector2.UP.rotated(rotation)*FORCE
-	player = _player
 	player.apply_impulse(-Vector2.UP.rotated(rotation)*FORCE)
-	global_rotation = 0
 
-
-func _on_bom_timer_timeout() -> void:
-	explode()
 
 
 func explode() -> void:
@@ -34,4 +27,8 @@ func explode() -> void:
 
 
 func _process(_delta: float) -> void:
-	%TextureProgressBar.value = int((1 - (%BomTimer.time_left/3))*100)
+	$Icon.global_rotation = linear_velocity.angle() - PI/2 + PI
+
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	explode()

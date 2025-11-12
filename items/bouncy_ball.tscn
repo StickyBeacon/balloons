@@ -28,7 +28,7 @@ angular_damp_mode = 1
 script = ExtResource("2_4r5u0")
 
 [node name="Icon" parent="." index="1"]
-modulate = Color(0, 0.6482414, 0.15528259, 1)
+modulate = Color(0, 1, 0, 1)
 texture = ExtResource("3_4r5u0")
 
 [node name="PlayerDetector" type="Area2D" parent="." index="2"]

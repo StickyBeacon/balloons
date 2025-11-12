@@ -1,5 +1,5 @@
 extends GPUParticles2D
-
+class_name Particle
 
 var self_destruct_time = lifetime
 

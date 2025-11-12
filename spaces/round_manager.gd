@@ -1,5 +1,7 @@
 extends Node
 
+var is_busy : bool = false
+
 
 func _ready() -> void:
 	var players : Array[BalloonResource] = PlayerManager.get_player_resources()
@@ -10,11 +12,24 @@ func _ready() -> void:
 
 
 func player_died(node : PlayerBalloon) -> void:
+	if is_busy: 
+		return
 	print("%s: %s just died!" % [name,node.name])
 	var players : Array[Node] = %PlayerContainer.get_children()
 	
+	if players.size() < 2:
+		is_busy = true
+		%WinnerLabel.visible = true
+		%WinnerLabel.modulate = Color.BLACK
+		%WinnerLabel.text = "BRUH"
+		await get_tree().create_timer(.5).timeout
+		%WinnerLabel.text = "WINNER"
+		%WinnerLabel.visible = false
+		next_round()
+		return
+	
 	if players.size() == 2:
-		
+		is_busy = true
 		ItemContainer.clear_items()
 		var winner : PlayerBalloon 
 		if players[0] == node:
@@ -25,8 +40,15 @@ func player_died(node : PlayerBalloon) -> void:
 		%WinnerLabel.visible = true
 		%WinnerLabel.modulate = winner.balloon.player_color
 		await get_tree().create_timer(1).timeout
+		if not winner:
+			%WinnerLabel.modulate = Color.GRAY
+			%WinnerLabel.text = "NVM"
+			await get_tree().create_timer(1).timeout
+			%WinnerLabel.text = "WINNER"
+			%WinnerLabel.visible = false
+			next_round()
+			return
 		%WinnerLabel.visible = false
-		ItemContainer.clear_items()
 		winner.balloon.points += 1
 		print("%s: %s has %s points!" % [name, winner.name, winner.balloon.points])
 		if winner.balloon.points >= 3:
@@ -54,6 +76,8 @@ func end_game() -> void:
 
 
 func next_round() -> void:
+	ItemContainer.clear_items()
+	is_busy = false
 	%PlayerContainer.clear_players()
 	%MapManager.change_map()
 	await get_tree().create_timer(1).timeout

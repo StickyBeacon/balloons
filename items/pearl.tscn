@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfm46xd3xkc7b"]
+
+[ext_resource type="PackedScene" uid="uid://b1tepfbuvkv0e" path="res://items/item.tscn" id="1_yie80"]
+[ext_resource type="Script" uid="uid://3aksydajvwon" path="res://items/pearl.gd" id="2_3cc1f"]
+[ext_resource type="Texture2D" uid="uid://ch7ec1pmf3yf7" path="res://assets/images/teleport.png" id="2_8brol"]
+[ext_resource type="AudioStream" uid="uid://chln30h44suu4" path="res://assets/audio/tele_in.wav" id="4_3cc1f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3cc1f"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pxpuq"]
+radius = 32.75668
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w4ysi"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("4_3cc1f")
+
+[node name="Pearl" instance=ExtResource("1_yie80")]
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_3cc1f")
+lock_rotation = true
+script = ExtResource("2_3cc1f")
+
+[node name="Icon" parent="." index="1"]
+modulate = Color(0, 1, 1, 1)
+texture = ExtResource("2_8brol")
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_pxpuq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = SubResource("AudioStreamRandomizer_w4ysi")
+autoplay = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
