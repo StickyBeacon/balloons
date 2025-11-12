@@ -1,6 +1,7 @@
 extends Item
 
-const FORCE : float = 50
+const FORCE : float = 100
+const PLAYER_FORCE : float = 400
 const poof_particle : Resource = preload("res://particles/pearl_particle.tscn")
 var player : PlayerBalloon
 
@@ -8,7 +9,7 @@ var player : PlayerBalloon
 func initialise(_player : PlayerBalloon) -> void:
 	linear_velocity = Vector2.UP.rotated(rotation)*FORCE
 	player = _player
-	player.apply_impulse(Vector2.UP.rotated(rotation)*FORCE)
+	player.apply_impulse(-Vector2.UP.rotated(rotation)*PLAYER_FORCE)
 	global_rotation = 0
 	
 

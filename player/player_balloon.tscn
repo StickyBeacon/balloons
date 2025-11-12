@@ -83,7 +83,7 @@ shape = SubResource("CircleShape2D_5o7mk")
 
 [node name="AimerNode" type="Node2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0, 1, 1)
 
 [node name="AimerIcon" type="Sprite2D" parent="AimerNode"]
 z_index = 10

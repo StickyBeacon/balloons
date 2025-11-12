@@ -1,6 +1,6 @@
 extends Particle
 
-const POP_FORCE : float = 500
+const POP_FORCE : float = 200
 const OFFSET : float = 100
 const MOVE_SPEED : float = 400
 

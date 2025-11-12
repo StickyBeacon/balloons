@@ -1,13 +1,14 @@
 extends Item
 class_name Nuke
 
-const FORCE : float = 50
+const FORCE : float = 200
+const NUKE_FORCE : float = 50
 const EXPLODE_FORCE : float = 2000
 const explode_particle : Resource = preload("res://particles/nuke_explode.tscn")
 
 
 func initialise(player : PlayerBalloon) -> void:
-	linear_velocity = Vector2.UP.rotated(rotation)*FORCE
+	linear_velocity = Vector2.UP.rotated(rotation)*NUKE_FORCE
 	player.apply_impulse(-Vector2.UP.rotated(rotation)*FORCE)
 
 
