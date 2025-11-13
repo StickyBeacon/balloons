@@ -20,7 +20,8 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	var is_allowed = event is InputEventKey \
-					or event is InputEventJoypadButton
+					or event is InputEventJoypadButton \
+					or event is InputEventMouseButton
 	
 	if is_allowed and event.is_pressed() and not exists_in_chosen_event(event):
 		if event is InputEventMouseButton:
@@ -62,6 +63,7 @@ func increase_size(child : SelectorBalloon, amount : float) -> void:
 
 	if child.scale.x > MAX_SCALE:
 		spawn_voter(child.balloon)
+		child.explode()
 		child.queue_free()
 	elif child.scale.x < MIN_SCALE:
 		child.queue_free()

@@ -60,6 +60,7 @@ func player_died(node : PlayerBalloon) -> void:
 
 
 func end_game() -> void:
+	ItemContainer.clear_items()
 	%PlayerContainer.clear_players()
 	%WinnerLabel.visible = true
 	%WinnerLabel.modulate = PlayerManager.get_winning_player().player_color

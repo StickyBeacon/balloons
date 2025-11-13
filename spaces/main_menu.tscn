@@ -41,3 +41,36 @@ unique_name_in_owner = true
 z_index = -100
 scale = Vector2(-51.083492, -51.083492)
 texture = SubResource("GradientTexture2D_ao52j")
+
+[node name="Label" type="Label" parent="."]
+z_index = -50
+offset_left = -472.0
+offset_top = -300.0
+offset_right = 495.0
+offset_bottom = -148.0
+theme_override_colors/font_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
+theme_override_font_sizes/font_size = 51
+text = "Choose a button to inflate a character"
+
+[node name="Label2" type="Label" parent="."]
+z_index = -50
+offset_left = -379.0
+offset_top = 36.0
+offset_right = 607.0
+offset_bottom = 188.0
+scale = Vector2(0.7661171, 0.7661171)
+theme_override_colors/font_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
+theme_override_font_sizes/font_size = 51
+text = "All chosen players need to press at the same time to start the game"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+z_index = -50
+offset_left = -484.0
+offset_top = 224.0
+offset_right = 502.0
+offset_bottom = 376.0
+theme_override_colors/font_color = Color(0.5409905, 0.5409905, 0.5409905, 1)
+theme_override_font_sizes/font_size = 51
+text = "(chosen players, spam in order to quit)"

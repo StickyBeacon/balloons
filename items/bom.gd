@@ -21,10 +21,14 @@ func _on_bom_timer_timeout() -> void:
 
 func explode() -> void:
 	var balloons = %BomArea.get_overlapping_bodies()
-	for balloon : PlayerBalloon in balloons:
+	for balloon : RigidBody2D in balloons:
+		print(balloon.name)
+		if balloon == self:
+			continue
 		var force_dir = (balloon.global_position - global_position).normalized()
 		balloon.apply_central_impulse(force_dir*EXPLODE_FORCE)
-		balloon.get_hit()
+		if balloon is PlayerBalloon:
+			balloon.get_hit()
 	
 	var poof = explode_particle.instantiate()
 	get_tree().current_scene.add_child(poof)

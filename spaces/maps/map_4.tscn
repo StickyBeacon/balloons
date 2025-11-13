@@ -5,34 +5,10 @@
 
 [node name="map_4" instance=ExtResource("1_bte14")]
 
-[node name="Obstacle" parent="." index="4" instance=ExtResource("2_apkul")]
-position = Vector2(-409.00003, -169)
-scale = Vector2(1.8155332, 2.205541)
-
-[node name="Obstacle6" parent="." index="5" instance=ExtResource("2_apkul")]
+[node name="Obstacle6" parent="." index="4" instance=ExtResource("2_apkul")]
 position = Vector2(530, 3.999999)
 scale = Vector2(47.187172, 2.2626457)
 
-[node name="Obstacle2" parent="." index="6" instance=ExtResource("2_apkul")]
-position = Vector2(-248, -169)
-scale = Vector2(1.8155332, 2.205541)
-
-[node name="Obstacle3" parent="." index="7" instance=ExtResource("2_apkul")]
-position = Vector2(-107.000015, -140)
-scale = Vector2(1.8155332, 2.205541)
-
-[node name="Obstacle4" parent="." index="8" instance=ExtResource("2_apkul")]
-position = Vector2(-113.00001, 14.000015)
-scale = Vector2(1.8155332, 2.205541)
-
-[node name="Obstacle5" parent="." index="9" instance=ExtResource("2_apkul")]
-position = Vector2(-296.00003, 92)
-scale = Vector2(1.8155332, 2.205541)
-
-[node name="Obstacle7" parent="." index="10" instance=ExtResource("2_apkul")]
-position = Vector2(-482.00003, 196.00005)
-scale = Vector2(1.8155332, 2.205541)
-
-[node name="Obstacle8" parent="." index="11" instance=ExtResource("2_apkul")]
-position = Vector2(-87.00003, 113.99998)
-scale = Vector2(1.8155332, 2.205541)
+[node name="Obstacle7" parent="." index="5" instance=ExtResource("2_apkul")]
+position = Vector2(-806.99994, 3.999999)
+scale = Vector2(47.187172, 2.2626457)

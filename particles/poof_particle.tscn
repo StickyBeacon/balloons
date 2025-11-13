@@ -1,16 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8qo1o8guonvr"]
+[gd_scene load_steps=6 format=3 uid="uid://c8qo1o8guonvr"]
 
+[ext_resource type="Texture2D" uid="uid://cbis0kc3vf1wy" path="res://assets/images/balloon_background.png" id="1_excvn"]
 [ext_resource type="Script" uid="uid://4c4m77gidsy8" path="res://particles/particle.gd" id="1_pfor1"]
-
-[sub_resource type="Gradient" id="Gradient_excvn"]
-offsets = PackedFloat32Array(0, 0.25333333, 0.30666667)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nhv1d"]
-gradient = SubResource("Gradient_excvn")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.6401869, 0.77102804)
 
 [sub_resource type="Curve" id="Curve_6htbk"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -26,16 +17,16 @@ spread = 60.0
 initial_velocity_min = 252.93999
 initial_velocity_max = 252.93999
 gravity = Vector3(0, 98, 0)
-scale_min = 0.39999998
-scale_max = 1.5
+scale_min = 0.099999994
+scale_max = 0.5
 scale_curve = SubResource("CurveTexture_aemne")
 hue_variation_min = -0.100000024
 hue_variation_max = 0.09999997
 
 [node name="PoofParticle" type="GPUParticles2D"]
 process_mode = 3
-z_index = 5
-texture = SubResource("GradientTexture2D_nhv1d")
+z_index = 20
+texture = ExtResource("1_excvn")
 lifetime = 0.5
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_1iuhg")

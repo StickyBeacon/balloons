@@ -9,7 +9,7 @@ const hurt_particle = preload("res://particles/player_hurt_particle.tscn")
 
 
 func _input(event: InputEvent) -> void:
-	if (event is InputEventKey or event is InputEventJoypadButton) and event.is_pressed():
+	if (event is InputEventKey or event is InputEventJoypadButton or event is InputEventMouseButton) and event.is_pressed():
 		if balloon.action_event == null:
 			balloon.action_event = event
 		if event.is_match(balloon.action_event):
@@ -28,7 +28,7 @@ func set_balloon(_balloon : BalloonResource):
 
 
 func get_hit() -> void:
-	
+	print("%s: Ow!" % name)
 	var part = hurt_particle.instantiate()
 	part.modulate = balloon.player_color
 	get_tree().current_scene.add_child(part)

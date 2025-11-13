@@ -6,6 +6,8 @@ const NUKE_FORCE : float = 50
 const EXPLODE_FORCE : float = 2000
 const explode_particle : Resource = preload("res://particles/nuke_explode.tscn")
 
+var exploding : bool = false
+
 
 func initialise(player : PlayerBalloon) -> void:
 	linear_velocity = Vector2.UP.rotated(rotation)*NUKE_FORCE
@@ -14,11 +16,17 @@ func initialise(player : PlayerBalloon) -> void:
 
 
 func explode() -> void:
+	if exploding : return
+	exploding = true
+	print("%s: boom!" % name)
 	var balloons = %BomArea.get_overlapping_bodies()
-	for balloon : PlayerBalloon in balloons:
+	for balloon : RigidBody2D in balloons:
+		if balloon == self:
+			continue
 		var force_dir = (balloon.global_position - global_position).normalized()
 		balloon.apply_central_impulse(force_dir*EXPLODE_FORCE)
-		balloon.get_hit()
+		if balloon is PlayerBalloon:
+			balloon.get_hit()
 	
 	var poof = explode_particle.instantiate()
 	get_tree().current_scene.add_child(poof)
