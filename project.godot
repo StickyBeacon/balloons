@@ -14,10 +14,6 @@ config/name="balloons"
 config/tags=PackedStringArray("2d", "gamejam", "prototype")
 run/main_scene="uid://7q2mbwdkvitd"
 config/features=PackedStringArray("4.5", "Forward Plus")
-boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/show_image=false
-boot_splash/fullsize=false
-boot_splash/use_filter=false
 boot_splash/image="uid://c6e4p7doxqrwr"
 config/icon="res://icon.svg"
 
@@ -43,3 +39,5 @@ window/stretch/mode="viewport"
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
